@@ -1,0 +1,26 @@
+Comandos para ejecutar el portafolio en Windows PowerShell
+
+1. Crear el entorno virtual (si no existe):
+python -m venv venv
+
+2. Activar el entorno virtual:
+.\venv\Scripts\Activate.ps1
+
+3. Instalar dependencias:
+pip install -r requirements.txt
+
+4. Ejecutar la app en modo desarrollo:
+reflex run
+
+5. Si el comando anterior falla por el launcher de Reflex, ejecutar directamente con Python del entorno:
+.\venv\Scripts\python.exe -m reflex run
+
+Comandos utiles adicionales
+
+- Ver la version instalada de Reflex:
+reflex --version
+
+- Actualizar pip antes de instalar dependencias:
+python -m pip install --upgrade pip
+
+- Si quieres volver a instalar desde cero, elimina .venv y repite los pasos anteriores.
