@@ -31,16 +31,16 @@ def index() -> rx.Component:
     return rx.box(
         navbar(),
 
-        rx.vstack(
-            rx.box(profile(), id="profile", style=section_style),
-            rx.box(tecnologies(), id="tecnologies", style=section_style),
-            rx.box(proyects(), id="proyects", style=section_style),
-            rx.box(experience(), id="experience", style=section_style),
-            rx.box(studies(), id="studies", style=section_style),
-            rx.box(more(), id="more", style=section_style),
-            rx.box(contact(), id="contact", style=section_style),        
-            style=index_styles.background_style 
-        ),
+        rx.box(profile(), id="profile", style=section_style),
+        rx.box(tecnologies(), id="tecnologies", style=section_style),
+        rx.box(proyects(), id="proyects", style=section_style),
+        rx.box(experience(), id="experience", style=section_style),
+        rx.box(studies(), id="studies", style=section_style),
+        rx.box(more(), id="more", style=section_style),
+        rx.box(contact(), id="contact", style=section_style),        
+        style=index_styles.background_style,
+
+        bg = gs.background_color,
 
     ),
 

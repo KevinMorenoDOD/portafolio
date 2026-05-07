@@ -3,9 +3,20 @@ font_medium_min = "1.3em"
 font_medium = "1.6em"
 font_large = "2.6em"
 
-color_primary = "#2AA19122"
+
+background_color = "#141414"
+foreground_color = "#F2F2F2"
+card_color = "#1C1C1C"
+primary_color = "#3BABA5"
+secondary_color = "#262626"
+primary_foreground_color = "#FFFFFF"
+secondary_foreground_color = "#8c8c8c"
+
+
+
+color_primary = "#141414"
 border_color = "#2AA191FF"
-color_page="#272727"
+color_page="#141414"
 
 padding_standard = "1.2em"
 
