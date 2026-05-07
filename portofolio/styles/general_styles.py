@@ -21,26 +21,37 @@ color_page="#141414"
 padding_standard = "1.2em"
 
 title_style = {
-    "font_size": font_large,
+    "font_size": ["2.6rem", "3.2rem", "4.8rem"],
     "font_weight": "bold",
-    "padding_bottom": "0.5em",
-    "border_bottom": f"0.2em solid {border_color}",
-    "margin_bottom": "0.5em",
+    "color": foreground_color,
     "min_width": "100%",
 }
 
 subtitle_style = {
-    "font_size": font_medium,
+    "font_size":"1.4rem",
     "font_weight": "bold",
-    "padding_bottom": "0.5em",
-    "margin_bottom": "0.4em",
-    "border_bottom": f"0.2em solid {border_color}",
+    "color": foreground_color,
     "width": "100%",
     "text_align": "left",
 }
 
 container_style = {
-    "margin": "1em",
-    "display": "flex",
-    "justify_content": "center",
+    "max_width": "72rem",
+    "margin": "0 auto",
+    "padding": ["5rem 1rem 2.5rem", "5.5rem 1.5rem 3rem", "6rem 2rem 3.5rem"],
+}
+
+parraph_style = {
+    "font_size": "1rem",
+    "line_height": "1.8",
+    "max_width": "37rem",
+    "color": secondary_foreground_color,
+    "margin_bottom": "1.6rem",
+}
+
+group_divider_style = {
+    "height": "2px",
+    "width": "100%",
+    "background": f"linear-gradient(90deg, {primary_color}, transparent)",
+    "margin_bottom": "1rem",
 }

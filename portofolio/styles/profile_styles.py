@@ -3,7 +3,7 @@ from . import general_styles as gs
 hero_section_style = {
     "max_width": "72rem",
     "margin": "0 auto",
-    "padding": ["7rem 1rem 2.5rem", "7.5rem 1.5rem 3rem", "8rem 2rem 3.5rem"],
+    "padding": ["5rem 1rem 2.5rem", "5.5rem 1.5rem 3rem", "6rem 2rem 3.5rem"],
 }
 
 hero_grid_style = {

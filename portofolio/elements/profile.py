@@ -14,7 +14,7 @@ def mail_toggle() -> rx.Component:
         rx.icon("mail", size=15),
         rx.cond(
             MailState.show_mail,
-            rx.text("morenokevinfelipe@gmail.com", color=gs.primary_color, font_weight="600"),
+            rx.text("kevin.dev.dod@gmail.com", color=gs.primary_color, font_weight="600"),
             rx.text("Mostrar correo"),
         ),
         style=profile_styles.mail_button_style,
@@ -66,7 +66,7 @@ def profile() -> rx.Component:
                     style=profile_styles.summary_style,
                 ),
                 rx.box(
-                    button_with_icon("github", "Github", "https://github.com/DODOPPPLER"),
+                    button_with_icon("github", "Github", "https://github.com/KevinMorenoDOD"),
                     button_with_icon(
                         "linkedin",
                         "LinkedIn",
@@ -90,6 +90,6 @@ def profile() -> rx.Component:
             ),
             style=profile_styles.hero_grid_style,
         ),
-        style=profile_styles.hero_section_style,
+        style=gs.container_style,
     )
     

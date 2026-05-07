@@ -2,82 +2,130 @@ import reflex as rx
 from ..styles import general_styles as gs
 from ..styles import tecnologies_styles
 
-def tags(text: str, icon_name: str, border:bool = False) ->rx.Component:
+principal_groups = [
+    {
+        "title": "Python",
+        "items": [
+            {"name": "Python", "icon": "/python.png"},
+            {"name": "Django", "icon": "/django.png"},
+            {"name": "FastAPI", "icon": "/fastapi.png"},
+        ],
+    },
+    {
+        "title": "Java",
+        "items": [
+            {"name": "Java", "icon": "/java.png"},
+            {"name": "Spring", "icon": "/springg.png"},
+        ],
+    },
+    {
+        "title": "SQL",
+        "items": [
+            {"name": "SQL", "icon": "/sql-server.png"},
+            {"name": "PostgreSQL", "icon": "/database(1).png"},
+        ],
+    },
+    {
+        "title": "NoSQL",
+        "items": [
+            {"name": "NoSQL", "icon": "/unstructured-data.png"},
+            {"name": "MongoDB", "icon": "/mongo.png"},
+        ],
+    },
+]
+
+secondary_tecnologies = [
+    {
+        "name": "HTML",
+        "icon": "/html-5.png"
+    },
+    {
+        "name": "CSS",
+        "icon": "/css-3.png"
+    },
+    {
+        "name": "JavaScript",
+        "icon": "/java-script.png"
+    },
+    {
+        "name": "Reflex",
+        "icon": "/reflex.png"
+    },
+    {
+        "name": "MySQL",
+        "icon": "/database.png"
+    },
+    {
+        "name": "SQLite",
+        "icon": "/sql-server.png"  
+    },
+    {
+        "name": "Git",
+        "icon": "/git.png"
+    },
+    {
+        "name": "Docker",
+        "icon": "/docker.png"
+    },
+    {
+        "name": "VBA",
+        "icon": "/vba.png"
+    },
+]
+
+def tag(text: str, icon_name: str) -> rx.Component:
     return rx.hstack(
         rx.image(
             src=icon_name,
-            style=tecnologies_styles.img_style
-            ),
+            style=tecnologies_styles.badge_icon_style,
+        ),
         rx.text(text),
-        style=tecnologies_styles.tag_style_bordered if border else tecnologies_styles.tag_style,
-    ) 
+        style=tecnologies_styles.badge_style,
+    )
+
+def tech_group(title: str, items: list[dict]) -> rx.Component:
+    return rx.box(
+        rx.text(title, style=tecnologies_styles.group_title_style),
+        rx.box(
+            *[tag(tech["name"], tech["icon"]) for tech in items],
+            style=tecnologies_styles.badges_row_style,
+        ),
+        style=tecnologies_styles.group_wrapper_style,
+    )
 
 
 def tecnologies() -> rx.Component:
     return rx.box(
         rx.vstack(
             rx.text(
-                "Tecnologies",
+                "Tecnologías",
                 style=gs.title_style,                
             ),
-
+            rx.box(style=gs.group_divider_style),
             rx.text(
                 "Principal",
                 style=gs.subtitle_style,
             ),
+            rx.box(style=gs.group_divider_style),
             rx.flex(
-                # Python ecosystem
-                rx.vstack(
-                    tags("Python", "/python.png",True),
-                    tags("Django", "/django.png",True),
-                    tags("FastAPI", "/fastapi.png",True),
-                    style=tecnologies_styles.vstack_style
-                ),
-                # Java ecosystem
-                rx.vstack(
-                    tags("Java", "/java.png",True),
-                    tags("Spring", "/springg.png",True),
-                    style=tecnologies_styles.vstack_style
-                ),
-                # SQL ecosystem
-                rx.vstack(
-                    tags("SQL", "/sql-server.png",True),
-                    tags("PostgeSQL", "/database(1).png",True),
-                    style=tecnologies_styles.vstack_style
-                ),
-                # NoSQL ecosystem
-                rx.vstack(
-                    tags("NoSQL", "/unstructured-data.png",True),
-                    tags("MongoDB", "/mongo.png",True),
-                    style=tecnologies_styles.vstack_style
-                ),
+                *[
+                    tech_group(group["title"], group["items"])
+                    for group in principal_groups
+                ],
                 wrap="wrap",
-                justify="center",
-                align="start",
-                spacing="6",
+                justify_content="flex-start",
+                gap="2rem",
                 width="100%",
             ),
-            
-            # Secondary Section
             rx.text(
-                "Secondary",
+                "Secundarias",
                 style=gs.subtitle_style,
             ),
-            rx.flex(
-                tags("HTML", "/html-5.png"),
-                tags("CSS", "/css-3.png"),
-                tags("JS", "/java-script.png"), 
-                tags("Reflex", "/reflex.png"),
-                tags("MySql", "/database.png"),
-                tags("SQLite", "/sql-server.png"),
-                wrap="wrap",
-                justify="center",
-                spacing="2",
-                width="100%",
-            ),          
-            width="90%",
-            style = gs.container_style            
-        ),      
-        width="100%",
-        style = gs.container_style
+            rx.box(style=gs.group_divider_style),
+
+            tech_group("Herramientas extras", secondary_tecnologies),
+            width="100%",
+            align_items="start",
+            style=gs.container_style,
+        ), 
     )
