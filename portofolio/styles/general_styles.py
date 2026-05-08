@@ -55,3 +55,10 @@ group_divider_style = {
     "background": f"linear-gradient(90deg, {primary_color}, transparent)",
     "margin_bottom": "1rem",
 }
+
+group_divider_title_style = {
+    "height": "4px",
+    "width": "100%",
+    "background": f"linear-gradient(90deg, {primary_color}, transparent)",
+    "margin_bottom": "4px",
+}

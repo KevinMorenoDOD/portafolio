@@ -101,7 +101,7 @@ def tecnologies() -> rx.Component:
                 "Tecnologías",
                 style=gs.title_style,                
             ),
-            rx.box(style=gs.group_divider_style),
+            rx.box(style=gs.group_divider_title_style),
             rx.text(
                 "Principal",
                 style=gs.subtitle_style,

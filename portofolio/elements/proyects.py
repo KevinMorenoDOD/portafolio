@@ -81,7 +81,7 @@ def proyects() -> rx.Component:
                 style=gs.title_style,
                 
             ),
-             rx.box(style=gs.group_divider_style),
+            rx.box(style=gs.group_divider_title_style),
             # Current project card
             rx.box(
                 rx.box(

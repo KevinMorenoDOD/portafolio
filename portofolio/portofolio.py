@@ -10,8 +10,8 @@ from .elements.tecnologies import tecnologies
 from .elements.experience import experience
 from .elements.proyects import proyects
 from .elements.studies import studies
-from .elements.more import more
 from .elements.contact import contact
+from .elements.footer import footer
 
 
 
@@ -30,14 +30,13 @@ def index() -> rx.Component:
     # Welcome Page (Index)
     return rx.box(
         navbar(),
-
         rx.box(profile(), id="profile", style=section_style),
         rx.box(tecnologies(), id="tecnologies", style=section_style),
         rx.box(proyects(), id="proyects", style=section_style),
         rx.box(experience(), id="experience", style=section_style),
         rx.box(studies(), id="studies", style=section_style),
-        rx.box(more(), id="more", style=section_style),
         rx.box(contact(), id="contact", style=section_style),        
+        footer(),
         style=index_styles.background_style,
 
         bg = gs.background_color,

@@ -1,60 +1,75 @@
 import reflex as rx
-from ..styles import experience_styles
+from ..styles import experience_styles as es
 from ..styles import general_styles as gs
 
 
-def elements(title:str, site:str, date:str, description:list[str]) -> rx.Component:
-    return rx.vstack(
-        rx.hstack(
-            rx.icon("cog"),
-            rx.text(title, style=gs.subtitle_style,
-            width="100%"),
-            align="center",
-            align_items="center",
+experiences = [
+    {
+        "title": "Técnico de Mantenimiento y Desarrollador",
+        "company": "Alimentos Cárnicos",
+        "location": "Bogotá",
+        "period": "Septiembre 2024 – Septiembre 2025",
+        "bullets": [
+            "Realicé mantenimiento en sitio y soporte técnico para impresoras, equipos de cómputo y cableado estructurado.",
+            "Diagnostiqué y resolví fallas de cableado estructurado y problemas de conectividad.",
+            "Desarrollé y lideré proyectos internos usando JavaScript y Google Apps Script para automatizar procesos y optimizar el tiempo de trabajo.",
+        ],
+    },
+    {
+        "title": "Desarrollador Front-End",
+        "company": "SENA – Institución Gustavo Campos Guevara",
+        "location": "Bogotá",
+        "period": "Junio 2018 – Noviembre 2020",
+        "bullets": [
+            "Diseñé e implementé un sistema de gestión de asistencia y excusas usando HTML y CSS.",
+            "Desarrollé interfaces intuitivas y responsivas para múltiples dispositivos.",
+            "Mejoré el seguimiento y registro de asistencia escolar, incrementando la eficiencia administrativa.",
+        ],
+    },
+]
+
+
+def _render_experience_item(exp) -> rx.Component:
+    return rx.box(
+        rx.vstack(
+            rx.hstack(
+                rx.icon("briefcase", color=gs.primary_color, size=15),
+                rx.text(exp["title"], style=gs.subtitle_style, color=gs.primary_foreground_color),
+                align="center",
+                align_items="center",
+                gap="0.5rem",
+            ),
+            rx.box(style=gs.group_divider_style),
+            rx.text(f"{exp['company']} — {exp['location']}", style=es.company_style),
+            rx.text(exp["period"], style=es.period_style, margin_bottom="0.75rem"),
+            rx.vstack(
+                *[
+                    rx.hstack(
+                        rx.box(style=es.bullet_dot_style),
+                        rx.text(b, style=es.bullet_item_style),
+                        align_items="flex-start",
+                        gap="0.5rem",
+                    )
+                    for b in exp["bullets"]
+                ],
+                spacing="2",
+            ),
+            spacing="3",
+            style=es.experience_card_style,
         ),
-        rx.text(site),
-        rx.text(date),
-        rx.list.unordered(
-            *[rx.list_item(desc) for desc in description],  
-        ),
-        width="100%"
+        width="100%",
+        padding_left="1.5rem",
+        border_left=f"4px solid {gs.primary_color}",
+        margin_top="1rem",
     )
+
 
 def experience() -> rx.Component:
     return rx.box(
         rx.vstack(
-            rx.text(
-                "Experience",
-                style=gs.title_style,
-                width="100%"
-            ),
-            elements(
-                "Maintenance Technician and Developer",
-                "Alimentos Cárnicos – Bogotá",
-                "September 2024 – September 2025",
-                [
-                    "Performed on-site maintenance and technical support for printers, computer equipment, and structured cabling. ",
-                    "Diagnosed and resolved structured cabling failures and connectivity issues. ",            
-                    "Developed and led internal projects using JavaScript and Google Apps Script to automate processes and optimize work time. "                
-                ]                
-            ),
-            elements(
-                "Front-End Developer",
-                "SENA – Gustavo Campos Guevara Institution",
-                "June 2018 – November 2020",
-                [
-                    "Designed and implemented an attendance and excuse management system using HTML and CSS.",
-                    "Developed intuitive and responsive interfaces for multiple devices.",
-                    "Improved school attendance tracking and registration, increasing administrative efficiency.",
-                ]
-            ),
-            align="center",
-            align_items="center",
-            width="90%",
-            style=gs.container_style
-        ),
-        style=gs.container_style,
-        display="flex",
-        justify_content="center",
-        width="100%",
+            rx.text("Experiencia", style=gs.title_style, width="100%"),
+            rx.box(style=gs.group_divider_title_style),
+            rx.vstack(*[_render_experience_item(e) for e in experiences], spacing="4", margin_top="0.75rem"),
+            style=es.section_style,
+        )
     )

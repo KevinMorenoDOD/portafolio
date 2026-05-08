@@ -9,9 +9,9 @@ navbar_items = [
     {"id": "contact", "label": "Contacto"},
 ]
 
-def button(text: str, section_id: str, id: str) -> rx.Component:
+def button(text: str, section_id: str) -> rx.Component:
     return rx.link(
-        rx.button(text, id=id, style=navbar_styles.navbar_button_style),
+        rx.button(text, style=navbar_styles.navbar_button_style),
         href=f"#{section_id}",
     )
 
@@ -23,7 +23,7 @@ def navbar() -> rx.Component:
                 href="#profile",
             ),
             rx.box(
-                *[button(item["label"], item["id"], item["id"]) for item in navbar_items],
+                *[button(item["label"], item["id"]) for item in navbar_items],
                 style=navbar_styles.navbar_links_style,
                 width="wrap",
             ),
