@@ -1,64 +1,68 @@
-font_small = "1em"
-font_medium_min = "1.3em"
-font_medium = "1.6em"
-font_large = "2.6em"
-
-
-background_color = "#141414"
-foreground_color = "#F2F2F2"
-card_color = "#1C1C1C"
-primary_color = "#3BABA5"
-secondary_color = "#262626"
-primary_foreground_color = "#FFFFFF"
-secondary_foreground_color = "#8c8c8c"
-
-
-
-color_primary = "#141414"
-border_color = "#2AA191FF"
-color_page="#141414"
-
-padding_standard = "1.2em"
+from . import general_styles as gs
 
 title_style = {
-    "font_size": ["2.6rem", "3.2rem", "4.8rem"],
+    "font_size": gs.font_large,
     "font_weight": "bold",
-    "color": foreground_color,
+    "padding_bottom": "0.5em",
+    "border_bottom": f"0.2em solid {gs.border_color}",
+    "margin_bottom": "0.5em",
     "min_width": "100%",
+    "text_align": "center",
 }
 
-subtitle_style = {
-    "font_size":"1.4rem",
-    "font_weight": "bold",
-    "color": foreground_color,
+cards_wrap_style = {
+    "display": "grid",
+    "grid_template_columns": ["1fr", "repeat(2, minmax(0, 1fr))", "repeat(2, minmax(0, 1fr))"],
+    "gap": "1.5rem",
+    "margin_top": "1rem",
+}
+
+card_style = {
+    "background_color": gs.card_color,
+    "border": f"1px solid {gs.secondary_color}",
+    "border_radius": "0.75rem",
+    "padding": "1.5rem",
+    "transition": "all 300ms ease",
     "width": "100%",
-    "text_align": "left",
+    "min_width": 0,
 }
 
-container_style = {
-    "max_width": "72rem",
-    "margin": "0 auto",
-    "padding": ["5rem 1rem 2.5rem", "5.5rem 1.5rem 3rem", "6rem 2rem 3.5rem"],
+icon_shell_style = {
+    "width": "2.5rem",
+    "height": "2.5rem",
+    "border_radius": "9999px",
+    "display": "flex",
+    "align_items": "center",
+    "justify_content": "center",
+    "margin_top": "0.25rem",
+    "background_color": "rgba(58,168,159,0.12)",
+    "border": "1px solid rgba(58,168,159,0.3)",
 }
 
-parraph_style = {
-    "font_size": "1rem",
-    "line_height": "1.8",
-    "max_width": "37rem",
-    "color": secondary_foreground_color,
-    "margin_bottom": "1.6rem",
+year_style = {
+    "font_size": "0.75rem",
+    "font_weight": "700",
+    "text_transform": "uppercase",
+    "letter_spacing": "0.12em",
+    "color": gs.primary_color,
 }
 
-group_divider_style = {
-    "height": "2px",
-    "width": "100%",
-    "background": f"linear-gradient(90deg, {primary_color}, transparent)",
-    "margin_bottom": "1rem",
+degree_style = {
+    "font_size": gs.font_medium,
+    "font_weight": "700",
+    "margin_top": "0.25rem",
+    "margin_bottom": "0.125rem",
+    "color": gs.foreground_color,
 }
 
-group_divider_title_style = {
-    "height": "4px",
-    "width": "100%",
-    "background": f"linear-gradient(90deg, {primary_color}, transparent)",
-    "margin_bottom": "4px",
+institution_style = {
+    "font_size": "0.95rem",
+    "font_weight": "600",
+    "color": gs.secondary_foreground_color,
+}
+
+detail_style = {
+    "font_size": "0.95rem",
+    "color": "#666666",
+    "margin_top": "0.25rem",
 }
