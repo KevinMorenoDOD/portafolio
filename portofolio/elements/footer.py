@@ -7,7 +7,7 @@ def footer() -> rx.Component:
 		rx.flex(
 			rx.hstack(
 				rx.box(style=fs.status_dot_style),
-				rx.text("Disponible para oportunidades", style=fs.status_text_style),
+				rx.text("Las variables y nuestro cerebro, contienen la informacion que compartiremos y usaremos en un futuro", style=fs.status_text_style),
 				style=fs.status_wrap_style,
 			),
 			
@@ -21,7 +21,7 @@ def footer() -> rx.Component:
 						rx.text("GitHub"),
 						style=fs.social_link_style,
 					),
-					href="https://github.com/",
+					href="https://github.com/KevinMorenoDOD",
 					is_external=True,
 				),
 				rx.link(
@@ -30,7 +30,7 @@ def footer() -> rx.Component:
 						rx.text("LinkedIn"),
 						style=fs.social_link_style,
 					),
-					href="https://linkedin.com/",
+					href="https://www.linkedin.com/in/kevin-felipe-moreno-ramirez-863b59144/",
 					is_external=True,
 				),
 				rx.text("(c) 2026 Kevin F. Moreno", style=fs.copyright_style),

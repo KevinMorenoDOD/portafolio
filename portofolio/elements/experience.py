@@ -5,6 +5,18 @@ from ..styles import general_styles as gs
 
 experiences = [
     {
+        "title": "Auxiliar de servicio tecnico",
+        "company": "Corporación Universitaria Minuto de Dios - UNIMINUTO",
+        "location": "Bogotá",
+        "period": "Octubre 2025 - Diciembre 2025",
+        "bullets": [
+            "Brindé soporte técnico a estudiantes, docentes y personal administrativo en hardware, software y plataformas institucionales.",
+            "Desarrollé scripts en Python para automatizar procesos internos y optimizar tareas operativas.",
+            "Utilicé Selenium para pruebas y validación de plataformas web institucionales.",
+            "Coordiné con distintas áreas para garantizar atención oportuna y continuidad en actividades académicas y administrativas."
+        ],
+    },
+    {
         "title": "Técnico de Mantenimiento y Desarrollador",
         "company": "Alimentos Cárnicos",
         "location": "Bogotá",
@@ -25,7 +37,7 @@ experiences = [
             "Desarrollé interfaces intuitivas y responsivas para múltiples dispositivos.",
             "Mejoré el seguimiento y registro de asistencia escolar, incrementando la eficiencia administrativa.",
         ],
-    },
+    },  
 ]
 
 

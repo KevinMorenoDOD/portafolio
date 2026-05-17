@@ -62,7 +62,7 @@ def profile() -> rx.Component:
                     style=profile_styles.location_row_style,
                 ),
                 rx.text(
-                    "Estudiante de Ingeniería de Sistemas en Colombia apasionado por el desarrollo Backend y el Machine Learning. Mi enfoque combina la construcción de APIs robustas con el análisis lógico derivado de las matemáticas y la física, disciplinas que inspiran mi precisión técnica. Busco unir un backend sólido con modelos inteligentes para crear soluciones reales, impulsado por un aprendizaje autodidacta constante y el sueño a largo plazo de transformar la tecnología a través de la educación.",
+                    "Desarrollador y Estudiante de Ingeniería de Sistemas orientado al desarrollo Backend y Machine Learning, con interés en la construcción de APIs, automatización y soluciones escalables. Cuento con una fuerte capacidad analítica, aprendizaje autodidacta y experiencia trabajando con tecnologías enfocadas en backend y procesamiento de datos. Busco aportar en proyectos tecnológicos donde pueda combinar lógica, desarrollo e innovación para crear soluciones de impacto.",
                     style=profile_styles.summary_style,
                 ),
                 rx.box(
@@ -70,7 +70,7 @@ def profile() -> rx.Component:
                     button_with_icon(
                         "linkedin",
                         "LinkedIn",
-                        "https://www.linkedin.com/in/kevin-felipe-moreno-ramirez-863b59144/",
+                        "https://www.linkedin.com/in/kevin-felipe-moreno-ramirez/",
                     ),
                     rx.link(
                         rx.hstack(
@@ -79,7 +79,7 @@ def profile() -> rx.Component:
                             spacing="2",
                             align_items="center",
                         ),
-                        href=rx.asset("CV_Kevin_Moreno_ES.pdf"),
+                        href=rx.asset("CV_simple_kevin_moreno_ES.pdf"),
                         is_external=True,
                         style=profile_styles.social_link_style,
                     ),
