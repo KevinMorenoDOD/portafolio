@@ -11,8 +11,9 @@ Documentación del proyecto de portafolio personal desarrollado con **Reflex** (
 3. [Estructura del proyecto](#3-estructura-del-proyecto)
 4. [Cómo funciona la app](#4-cómo-funciona-la-app)
 5. [Secciones del portafolio](#5-secciones-del-portafolio)
-6. [Instalación y ejecución](#6-instalación-y-ejecución)
-7. [Qué me falta mejorar](#7-qué-me-falta-mejorar)
+6. [Contenido actual de componentes](#6-contenido-actual-de-componentes)
+7. [Instalación y ejecución](#7-instalación-y-ejecución)
+8. [Qué me falta mejorar](#8-qué-me-falta-mejorar)
 
 ---
 
@@ -20,7 +21,7 @@ Documentación del proyecto de portafolio personal desarrollado con **Reflex** (
 
 Es mi portafolio personal: una Single Page Application construida con [Reflex](https://reflex.dev), un framework que me permite desarrollar aplicaciones web completas usando solo Python. No tiene backend propio ni base de datos — es 100% frontend.
 
-La navegación entre secciones se hace con anclas HTML, sin recargar la página. El diseño es vertical con un navbar fijo arriba.
+La navegación entre secciones se hace con anclas HTML, sin recargar la página. El diseño es vertical con un navbar fijo arriba. Todos los textos de la app están en español.
 
 ---
 
@@ -40,13 +41,14 @@ La navegación entre secciones se hace con anclas HTML, sin recargar la página.
 ## 3. Estructura del proyecto
 
 ```
-portofolio/
+portofolio/                          # raíz del repositorio
 ├── requirements.txt
-├── rxconfig.py                  # Configuración de Reflex y plugins
-├── assets/                      # Imágenes, iconos y mi CV en PDF
-└── portofolio/
-    ├── portofolio.py            # Punto de entrada — arma la página
-    ├── elements/                # Un archivo por sección
+├── rxconfig.py                      # Configuración de Reflex y plugins
+├── assets/                          # Imágenes, iconos y mi CV en PDF
+└── portofolio/                      # Código de la app
+    ├── __init__.py
+    ├── portofolio.py               # Punto de entrada — arma la página
+    ├── elements/                   # Componentes / secciones
     │   ├── navbar.py
     │   ├── profile.py
     │   ├── tecnologies.py
@@ -55,27 +57,33 @@ portofolio/
     │   ├── proyects.py
     │   ├── contact.py
     │   └── footer.py
-    └── styles/                  # Estilos separados por componente
+    └── styles/                     # Estilos separados por componente
+        ├── contact_styles.py
+        ├── experience_styles.py
+        ├── footer_styles.py
+        ├── general_styles.py
+        ├── index_styles.py
+        ├── tecnologies_styles.py
+        ├── studies_styles.py
+        ├── proyects_style.py
+        ├── profile_styles.py
+        └── navbar_styles.py
 ```
 
 ---
 
 ## 4. Cómo funciona la app
 
-El único estado reactivo que implementé es este:
+La aplicación usa estados reactivos en varias secciones. Ejemplo en `profile`:
 
 ```python
 class PortfolioState(rx.State):
     show_email: bool = False
 ```
 
-Controla el botón **"Show Mail"** en mi sección de perfil:
+Este estado controla el botón **"Show Mail"** en `profile`: al hacer clic se revela el correo (evitando exponerlo en el HTML estático) y se ofrece la opción para abrir el cliente. 
 
-1. Carga con el correo oculto (`show_email = False`)
-2. Al hacer clic, `show_email` pasa a `True`
-3. Reflex re-renderiza y muestra mi dirección + un botón `mailto:`
-
-Esto evita que mi correo quede expuesto directamente en el HTML al cargar la página.
+La sección `contact` ahora incorpora reactividad para manejar su comportamiento (por ejemplo, mostrar/ocultar formularios, mensajes de confirmación o interacciones dinámicas). Ya no depende exclusivamente de un enlace `mailto:`.
 
 ---
 
@@ -85,19 +93,50 @@ Esto evita que mi correo quede expuesto directamente en el HTML al cargar la pá
 |---|---|---|
 | **Navbar** | ✅ Listo | Links internos a cada sección |
 | **Profile** | ✅ Listo | Foto, nombre, descripción, links a GitHub/LinkedIn y descarga de CV |
-| **Technologies** | ✅ Listo | Mis tecnologías principales y secundarias con iconos |
+| **Technologies** | ✅ Listo | Tecnologías principales y secundarias con iconos |
 | **Experience** | ✅ Listo | Experiencia laboral con cargo, empresa, fechas y responsabilidades |
 | **Studies** | ✅ Listo | Formación académica |
-| **Projects** | ⚠️ En desarrollo | Placeholder — aún sin proyectos reales cargados |
-| **More** | ⚠️ En desarrollo | Reservada para certificaciones, idiomas u otros datos |
-| **Contact** | ✅ Listo | Repite los medios de contacto al final de la página |
-| **Footer** | ⚠️ Mínimo | Por completar |
+| **Projects** | ⚠️ En desarrollo | Placeholders — aún sin proyectos reales cargados |
+| **Contact** | ✅ Listo | Medios de contacto; ahora con reactividad (formulario/estado) |
+| **Footer** | ✅ Listo | Completado — información y enlaces finales presentes |
 
 ---
 
-## 6. Instalación y ejecución
+## 6. Contenido actual de componentes
 
-> Comandos para **Windows PowerShell**, desde la raíz del proyecto.
+Listado de archivos actuales (directorio `portofolio`):
+
+- Componentes (`portofolio/elements`):
+  - navbar.py
+  - profile.py
+  - tecnologies.py
+  - experience.py
+  - studies.py
+  - proyects.py
+  - contact.py
+  - footer.py
+
+- Estilos (`portofolio/styles`):
+  - contact_styles.py
+  - experience_styles.py
+  - footer_styles.py
+  - general_styles.py
+  - index_styles.py
+  - tecnologies_styles.py
+  - studies_styles.py
+  - proyects_style.py
+  - profile_styles.py
+  - navbar_styles.py
+
+Notas rápidas:
+- Los textos de la app están en español.
+- Los imports de estilos en `studies` ya fueron corregidos.
+
+---
+
+## 7. Instalación y ejecución
+
+Comandos para **Windows PowerShell**, desde la raíz del proyecto:
 
 ```powershell
 # 1. Crear el entorno virtual
@@ -115,22 +154,18 @@ reflex run
 
 La app queda disponible en `http://localhost:3000`.
 
-> Si PowerShell bloquea la activación, ejecuta primero:
-> `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+Si PowerShell bloquea la activación, ejecuta:
+`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
-> En **macOS/Linux** activa el entorno con: `source .venv/bin/activate`
+En macOS/Linux activa el entorno con: `source .venv/bin/activate`
 
 ---
 
-## 7. Qué me falta mejorar
+## 8. Qué me falta mejorar
 
 | Prioridad | Tarea |
 |---|---|
-| 🔴 Alta | Completar la sección de proyectos con mis repos reales |
-| 🔴 Alta | Definir el contenido de la sección "More" |
-| 🟡 Media | Unificar `experience_styles.py` y `style_experience.py` (están duplicados) |
-| 🟡 Media | Revisar posible importación incorrecta en `studies_styles.py` |
-| 🟡 Media | Agregar contenido al footer |
-| 🟢 Baja | Corregir nombres: `tecnologies` → `technologies`, `proyects` → `projects` |
-| 🟢 Baja | Mejorar responsive para móvil |
+| 🔴 Alta | Completar la sección de proyectos con repos reales y ejemplos |
+| 🟢 Baja | Evaluar renombrar archivos: `tecnologies` → `technologies`, `proyects` → `projects` (requiere actualizar imports) |
 | 🟢 Baja | Agregar metaetiquetas SEO y Open Graph |
+
