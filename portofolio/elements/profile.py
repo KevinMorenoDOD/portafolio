@@ -70,7 +70,7 @@ def profile() -> rx.Component:
                     button_with_icon(
                         "linkedin",
                         "LinkedIn",
-                        "https://www.linkedin.com/in/kevin-felipe-moreno-ramirez/",
+                        "https://www.linkedin.com/in/kevin-felipe-moreno-ramirez-863b59144/",
                     ),
                     rx.link(
                         rx.hstack(
