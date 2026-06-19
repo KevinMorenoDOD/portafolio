@@ -10,7 +10,7 @@ projects_data = [
         "tech": ["JavaScript", "C#", "SQL Server", "Kotlin" ],
         "year": "2025",
         "role": "Desarrollador Principal",
-        "preview": "/mailoffice.png",
+        "preview": "/mailoffice.jpg",
         "github": "https://github.com/KevinMorenoDOD/mailoffice",
         "youtube": "https://youtu.be/jVivE-QcvVc",
     },
