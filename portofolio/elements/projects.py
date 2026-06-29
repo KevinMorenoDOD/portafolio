@@ -15,25 +15,15 @@ projects_data = [
         "youtube": "https://youtu.be/jVivE-QcvVc",
     },
     {
-        "title": "Sistema de Asistencia",
-        "description": "Sistema web para gestión de asistencia y excusas desarrollado para el SENA, con diseño responsivo para múltiples dispositivos.",
-        "tech": ["HTML", "CSS", "JavaScript"],
-        "year": "2020",
-        "role": "Desarrollador Front-End",
-        "preview": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=800&h=400&fit=crop",
-        "github": "https://github.com/",
-        "youtube": "https://youtube.com/",
-    },
-    {
-        "title": "API REST – Django",
-        "description": "API RESTful construida con Django y PostgreSQL, implementando autenticación, operaciones CRUD y patrones de arquitectura limpia.",
-        "tech": ["Python", "Django", "PostgreSQL", "REST"],
-        "year": "2024",
-        "role": "Desarrollador Backend",
-        "preview": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop",
-        "github": "https://github.com/",
-        "youtube": "https://youtube.com/",
-    },
+        "title": "SoporteTech",
+        "description": "Sistema de gestión de tickets IT con entrada vía WhatsApp + asistente AI (DeepSeek), backend Spring Boot, panel React y automatización n8n.",
+        "tech": ["Java", "Spring Boot", "React", "PostgreSQL", "JavaScript", "Google Cloud"],
+        "year": "2026",
+        "role": "Desarrollador Full Stack",
+        "preview": "/soportech.png",
+        "github": "https://github.com/KevinMorenoDOD/Soportech",
+        "youtube": "https://youtu.be/XNgxpWF93Uk"
+    }
 ]
 
 

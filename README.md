@@ -164,8 +164,5 @@ En macOS/Linux activa el entorno con: `source .venv/bin/activate`
 ## 8. Qué me falta mejorar
 
 | Prioridad | Tarea |
-|---|---|
-| 🔴 Alta | Completar la sección de proyectos con repos reales y ejemplos |
-| 🟢 Baja | Evaluar renombrar archivos: `tecnologies` → `technologies`, `proyects` → `projects` (requiere actualizar imports) |
 | 🟢 Baja | Agregar metaetiquetas SEO y Open Graph |
 
