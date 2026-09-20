@@ -154,6 +154,18 @@ reflex run
 
 La app queda disponible en `http://localhost:3000`.
 
+### Despliegue en Render
+
+El archivo `render.yaml` configura el servicio para escuchar en el puerto que Render asigna mediante `PORT`. Esto es necesario para que el frontend y el backend de Reflex compartan el mismo origen y para que funcionen los WebSockets de `/_event/`.
+
+Si el servicio ya existe en Render, usa como **Start Command**:
+
+```bash
+python start.py
+```
+
+El script usa automáticamente el `PORT` asignado por Render. En local, si `PORT` no existe, busca un puerto libre.
+
 Si PowerShell bloquea la activación, ejecuta:
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
