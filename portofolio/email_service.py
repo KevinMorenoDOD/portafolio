@@ -49,11 +49,10 @@ Mensaje:
     msg.attach(MIMEText(body, "plain", "utf-8"))
 
     try:
-        server = smtplib.SMTP(smtp_server, smtp_port)
-        server.starttls()
-        server.login(smtp_user, smtp_password)
-        server.sendmail(smtp_user, recipient, msg.as_string())
-        server.quit()
+        with smtplib.SMTP(smtp_server, smtp_port, timeout=15) as server:
+            server.starttls()
+            server.login(smtp_user, smtp_password)
+            server.sendmail(smtp_user, recipient, msg.as_string())
         return {"success": True, "error": None}
     except smtplib.SMTPAuthenticationError:
         return {
