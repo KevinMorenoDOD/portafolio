@@ -1,5 +1,4 @@
 import os
-import socket
 import subprocess
 import sys
 
@@ -9,18 +8,15 @@ def get_port() -> int:
     if configured_port:
         return int(configured_port)
 
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-        sock.bind(("0.0.0.0", 0))
-        return sock.getsockname()[1]
+    return 3000  # Default Reflex prod port
 
 
 port = get_port()
 print(f"Starting Reflex on port {port}")
 
-# Render exposes one public port. In production Reflex uses the backend server
-# to serve the frontend and the /_event/ WebSocket from the same origin.
-os.environ["REFLEX_BACKEND_PORT"] = str(port)
-
+# Reflex production mode serves frontend + backend on a single port.
+# --frontend-port sets the port for both frontend and backend.
+# --backend-host 0.0.0.0 ensures it's accessible from outside the container.
 subprocess.run(
     [
         sys.executable,
@@ -31,6 +27,8 @@ subprocess.run(
         "prod",
         "--backend-host",
         "0.0.0.0",
+        "--frontend-port",
+        str(port),
     ],
     check=True,
 )
