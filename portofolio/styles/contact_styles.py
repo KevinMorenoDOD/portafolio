@@ -103,3 +103,15 @@ popup_close_button_style = {
     "font_size": "1.2rem",
     "cursor": "pointer",
 }
+
+error_message_style = {
+    "text_align": "center",
+    "padding": "1rem",
+    "font_size": "0.95rem",
+    "font_weight": "500",
+    "color": "#ef4444",
+    "background_color": "#fef2f2",
+    "border": "1px solid #fecaca",
+    "border_radius": "0.5rem",
+    "margin_bottom": "0.5rem",
+}

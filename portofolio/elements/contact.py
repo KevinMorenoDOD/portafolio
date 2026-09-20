@@ -1,6 +1,7 @@
 import reflex as rx
 from ..styles import contact_styles as cs
 from ..styles import general_styles as gs
+from ..email_service import send_contact_email
 
 
 class ContactState(rx.State):
@@ -8,6 +9,9 @@ class ContactState(rx.State):
     email: str = ""
     message: str = ""
     show_success: bool = False
+    show_error: bool = False
+    error_message: str = ""
+    is_sending: bool = False
 
     @rx.event
     def handle_name_change(self, value: str):
@@ -29,16 +33,36 @@ class ContactState(rx.State):
 
     @rx.event
     def handle_submit(self):
-        # Aquí podrías integrar envío real a email, API, etc.
-        # Por ahora solo marcamos como enviado y limpiamos el formulario
-        self.show_success = True
-        self.name = ""
-        self.email = ""
-        self.message = ""
+        # Validate fields
+        if not self.name.strip() or not self.email.strip() or not self.message.strip():
+            self.error_message = "Por favor, completa todos los campos."
+            self.show_error = True
+            return
+
+        self.is_sending = True
+        self.show_error = False
+        self.show_success = False
+
+        result = send_contact_email(self.name, self.email, self.message)
+
+        self.is_sending = False
+
+        if result["success"]:
+            self.show_success = True
+            self.name = ""
+            self.email = ""
+            self.message = ""
+        else:
+            self.error_message = result.get("error", "Error al enviar el mensaje.")
+            self.show_error = True
 
     @rx.event
     def hide_success(self):
         self.show_success = False
+
+    @rx.event
+    def hide_error(self):
+        self.show_error = False
 
 
 def contact() -> rx.Component:
@@ -75,6 +99,13 @@ def contact() -> rx.Component:
                 ),
                 rx.fragment(),
             ),
+            rx.cond(
+                ContactState.show_error,
+                rx.box(
+                    rx.text(ContactState.error_message, style=cs.error_message_style),
+                ),
+                rx.fragment(),
+            ),
             rx.vstack(
                 rx.input(
                     placeholder="TU NOMBRE",
@@ -101,11 +132,20 @@ def contact() -> rx.Component:
                     css={"&::placeholder": {"color": cs.placeholder_color}},
                     class_name="placeholder:text-slate-300 placeholder:opacity-100",
                 ),
-                rx.button(
-                    rx.icon("send", size=15),
-                    "Enviar Mensaje",
-                    on_click=ContactState.handle_submit,
-                    style=cs.submit_button_style,
+                rx.cond(
+                    ContactState.is_sending,
+                    rx.button(
+                        rx.spinner(size=15),
+                        "Enviando...",
+                        style=cs.submit_button_style,
+                        is_loading=True,
+                    ),
+                    rx.button(
+                        rx.icon("send", size=15),
+                        "Enviar Mensaje",
+                        on_click=ContactState.handle_submit,
+                        style=cs.submit_button_style,
+                    ),
                 ),
                 spacing="8",
                 style=cs.form_container_style,

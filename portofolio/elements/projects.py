@@ -30,7 +30,7 @@ projects_data = [
 class ProjectsState(rx.State):
     """Estado para el carrusel de proyectos."""
     current_index: int = 0
-    current_position: str = "1 / 3"
+    current_position: str = "1 / 2"
     current_title: str = projects_data[0]["title"]
     current_description: str = projects_data[0]["description"]
     current_role: str = projects_data[0]["role"]
