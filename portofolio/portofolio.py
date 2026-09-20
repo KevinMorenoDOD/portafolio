@@ -31,8 +31,8 @@ def index() -> rx.Component:
     return rx.box(
         navbar(),
         rx.box(profile(), id="profile", style=section_style),
-        rx.box(tecnologies(), id="tecnologies", style=section_style),
-        rx.box(proyects(), id="proyects", style=section_style),
+        rx.box(tecnologies(), id="technologies", style=section_style),
+        rx.box(proyects(), id="projects", style=section_style),
         rx.box(experience(), id="experience", style=section_style),
         rx.box(studies(), id="studies", style=section_style),
         rx.box(contact(), id="contact", style=section_style),        
