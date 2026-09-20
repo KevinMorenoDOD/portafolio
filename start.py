@@ -17,6 +17,11 @@ def get_port() -> int:
 port = get_port()
 print(f"Starting Reflex on port {port}")
 
+# Render exposes one public port, so Reflex must use it for the backend too.
+os.environ["REFLEX_FRONTEND_PORT"] = str(port)
+os.environ["REFLEX_BACKEND_PORT"] = str(port)
+os.environ["REFLEX_API_URL"] = f"http://localhost:{port}"
+
 subprocess.run(
     [
         sys.executable,
@@ -27,8 +32,6 @@ subprocess.run(
         "prod",
         "--backend-host",
         "0.0.0.0",
-        "--frontend-port",
-        str(port),
     ],
     check=True,
 )

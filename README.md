@@ -156,7 +156,7 @@ La app queda disponible en `http://localhost:3000`.
 
 ### Despliegue en Render
 
-El archivo `render.yaml` configura el servicio para escuchar en el puerto que Render asigna mediante `PORT`. Esto es necesario para que el frontend y el backend de Reflex compartan el mismo origen y para que funcionen los WebSockets de `/_event/`.
+El archivo `render.yaml` configura el servicio para escuchar en el puerto que Render asigna mediante `PORT`. `start.py` aplica ese mismo puerto al frontend y al backend de Reflex, necesario para que funcionen los WebSockets de `/_event/`.
 
 Si el servicio ya existe en Render, usa como **Start Command**:
 
