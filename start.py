@@ -14,9 +14,9 @@ def get_port() -> int:
 port = get_port()
 print(f"Starting Reflex on port {port}")
 
-# Reflex production mode serves frontend + backend on a single port.
-# --frontend-port sets the port for both frontend and backend.
-# --backend-host 0.0.0.0 ensures it's accessible from outside the container.
+# Render only exposes one public port. `--single-port` makes Reflex build the
+# frontend and serve it together with the backend (including the /_event
+# websocket) from the same port, which is required for the app to work.
 subprocess.run(
     [
         sys.executable,
@@ -27,6 +27,7 @@ subprocess.run(
         "prod",
         "--backend-host",
         "0.0.0.0",
+        "--single-port",
         "--frontend-port",
         str(port),
     ],
