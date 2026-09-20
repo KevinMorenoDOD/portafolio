@@ -135,7 +135,7 @@ def contact() -> rx.Component:
                 rx.cond(
                     ContactState.is_sending,
                     rx.button(
-                        rx.spinner(size=3),
+                        rx.spinner(size="3"),
                         "Enviando...",
                         style=cs.submit_button_style,
                         is_loading=True,
