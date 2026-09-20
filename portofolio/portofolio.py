@@ -6,9 +6,9 @@ from .styles import index_styles
 
 from .elements.navbar import navbar
 from .elements.profile import profile
-from .elements.tecnologies import technologies
+from .elements.technologies import technologies
 from .elements.experience import experience
-from .elements.proyects import projects
+from .elements.projects import projects
 from .elements.studies import studies
 from .elements.contact import contact
 from .elements.footer import footer
