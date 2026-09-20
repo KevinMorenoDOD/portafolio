@@ -94,7 +94,7 @@ def tech_group(title: str, items: list[dict]) -> rx.Component:
     )
 
 
-def tecnologies() -> rx.Component:
+def technologies() -> rx.Component:
     return rx.box(
         rx.vstack(
             rx.text(

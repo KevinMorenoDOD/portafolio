@@ -63,7 +63,7 @@ class ProjectsState(rx.State):
         self._set_current_project(index)
 
 
-def proyects() -> rx.Component:
+def projects() -> rx.Component:
     return rx.box(
         rx.vstack(
             rx.text(
