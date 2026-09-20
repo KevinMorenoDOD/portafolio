@@ -7,3 +7,11 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: "3.12"
+      # Brevo HTTPS API (required on Render free tier, where SMTP ports are blocked).
+      # Set the real values in the Render dashboard (sync: false keeps them out of git).
+      - key: BREVO_API_KEY
+        sync: false
+      - key: SENDER_EMAIL
+        sync: false
+      - key: RECIPIENT_EMAIL
+        sync: false
